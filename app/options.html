@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css styles/main.css -->
+    <link href="styles/main.css" rel="stylesheet">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <h1>Options</h1>
+
+    <label for="port">BrowserSync Port</label>
+    <input id="port" name="port" placeholder="1-65535" type="number" max="65535" min="0">
+    <div class="help">Input your BrowserSync server port that contains the CSS for the subreddit styling and the images involved.</div>
+
+    <div id="error" class="error"></div>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/options.js -->
+    <script src="scripts/options.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
