@@ -1,38 +1,49 @@
 'use strict';
 
 (function() {
-  var errorDiv = document.getElementById('error');
-  var portInput = document.getElementById('port');
+  var stylePortInput = document.getElementById('stylePort');
+  var stylePortErrorDiv = document.getElementById('stylePortError');
+  var bsPortInput = document.getElementById('bsPort');
+  var bsPortErrorDiv = document.getElementById('bsPortError');
 
   document.addEventListener('DOMContentLoaded', function() {
     chrome.storage.sync.get({
-      port: '3500'
+      stylePort: '3500',
+      bsPort: '3501'
     }, function(items) {
-      portInput.value = items.port;
+      stylePortInput.value = items.stylePort;
+      bsPortInput.value = items.bsPort;
     });
   });
 
   // Check for errors
-  var checkErrors = function() {
-    var value = portInput.value;
-    errorDiv.innerHTML = '';
+  var checkErrors = function(value, errorBox) {
+    errorBox.innerHTML = '';
     if (value === '') {
-      errorDiv.insertAdjacentHTML('beforeend', '<br />Should not be empty.');
+      errorBox.insertAdjacentHTML('beforeend', '<br />Should not be empty.');
     }
     if (value.search(/\D/) !== -1) {
-      errorDiv.insertAdjacentHTML('beforeend', '<br />Should be numbers.');
+      errorBox.insertAdjacentHTML('beforeend', '<br />Should be numbers.');
     }
     if (value > 65535 || value < 1 || value.length > 5) {
-      errorDiv.insertAdjacentHTML('beforeend', '<br />Should be between 1-65535.');
+      errorBox.insertAdjacentHTML('beforeend', '<br />Should be between 1-65535.');
     }
 
-    return errorDiv.innerHTML !== '';
+    return errorBox.innerHTML !== '';
   };
 
-  portInput.addEventListener('keyup', function() {
-    if (!checkErrors()) {
+  stylePortInput.addEventListener('keyup', function() {
+    if (!checkErrors(this.value, stylePortErrorDiv)) {
       chrome.storage.sync.set({
-        port: Number(portInput.value)
+        stylePort: Number(this.value)
+      });
+    }
+  });
+
+  bsPortInput.addEventListener('keyup', function() {
+    if (!checkErrors(this.value, bsPortErrorDiv)) {
+      chrome.storage.sync.set({
+        bsPort: Number(this.value)
       });
     }
   });
