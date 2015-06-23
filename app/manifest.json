@@ -11,13 +11,20 @@
   "default_locale": "en",
   "permissions": [
     "storage",
-    "http://*.reddit.com/*",
-    "https://*.reddit.com/*"
+    "http://*.reddit.com/*"
   ],
   "background": {
     "scripts": [
+      "scripts/background.js",
       "scripts/chromereload.js"
     ]
+  },
+  "page_action": {
+    "default_icon": {
+      "19": "images/icon-19.png",
+      "38": "images/icon-38.png"
+    },
+    "default_title": "__MSG_appName__"
   },
   "options_page": "options.html",
   "options_ui": {
@@ -28,8 +35,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*.reddit.com/*",
-        "https://*.reddit.com/*"
+        "*://*.reddit.com/*"
       ],
       "js": [
         "scripts/inject.js"
