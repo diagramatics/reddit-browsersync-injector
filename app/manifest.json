@@ -1,6 +1,6 @@
 {
   "name": "__MSG_appName__",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "homepage_url": "http://extensionizr.com",
@@ -11,12 +11,11 @@
   "default_locale": "en",
   "permissions": [
     "storage",
-    "http://*.reddit.com/*"
+    "*://*.reddit.com/*"
   ],
   "background": {
     "scripts": [
-      "scripts/background.js",
-      "scripts/chromereload.js"
+      "scripts/background.js"
     ]
   },
   "page_action": {
