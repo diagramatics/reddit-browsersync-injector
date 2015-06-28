@@ -12,17 +12,11 @@
   <body>
     <h1>Options</h1>
 
-    <label for="stylePort">BrowserSync Assets Port</label>
-    <input id="stylePort" name="stylePort" placeholder="1-65535" type="number" max="65535" min="0">
-    <div class="help">Input your BrowserSync server port that contains the CSS for the subreddit styling and the images involved.</div>
+    <label for="port">BrowserSync Assets Port</label>
+    <input id="port" name="port" placeholder="1-65535" type="number" max="65535" min="0">
+    <div class="help">Input your BrowserSync server port that you're using for the project.</div>
 
-    <div id="stylePortError" class="error"></div>
-
-    <label for="bsPort">BrowserSync LiveReload Port</label>
-    <input id="bsPort" name="bsPort" placeholder="1-65535" type="number" max="65535" min="0">
-    <div class="help">Input your BrowserSync server port that is used for live reloading the injected Reddit page.</div>
-
-    <div id="bsPortError" class="error"></div>
+    <div id="portError" class="error"></div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->

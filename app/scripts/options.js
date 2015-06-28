@@ -1,18 +1,14 @@
 'use strict';
 
 (function() {
-  var stylePortInput = document.getElementById('stylePort');
-  var stylePortErrorDiv = document.getElementById('stylePortError');
-  var bsPortInput = document.getElementById('bsPort');
-  var bsPortErrorDiv = document.getElementById('bsPortError');
+  var portInput = document.getElementById('port');
+  var portErrorDiv = document.getElementById('portError');
 
   document.addEventListener('DOMContentLoaded', function() {
     chrome.storage.sync.get({
-      stylePort: '3500',
-      bsPort: '3501'
+      port: '3500'
     }, function(items) {
-      stylePortInput.value = items.stylePort;
-      bsPortInput.value = items.bsPort;
+      portInput.value = items.port;
     });
   });
 
@@ -32,18 +28,10 @@
     return errorBox.innerHTML !== '';
   };
 
-  stylePortInput.addEventListener('keyup', function() {
-    if (!checkErrors(this.value, stylePortErrorDiv)) {
+  portInput.addEventListener('keyup', function() {
+    if (!checkErrors(this.value, portErrorDiv)) {
       chrome.storage.sync.set({
-        stylePort: Number(this.value)
-      });
-    }
-  });
-
-  bsPortInput.addEventListener('keyup', function() {
-    if (!checkErrors(this.value, bsPortErrorDiv)) {
-      chrome.storage.sync.set({
-        bsPort: Number(this.value)
+        port: Number(this.value)
       });
     }
   });
